@@ -1,14 +1,17 @@
 const env = require("dotenv").config();
 
+const sequelize = require("./util/database");
+
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+const expressHbs = require("express-handlebars");
 
 const fitnessRoutes = require("./routes/fitness");
 
 const errorController = require("./controllers/error");
 
-const expressHbs = require("express-handlebars");
+const Profile = require("./models/profile");
 
 if (env.error) {
   throw new Error("Failed to load .env file");
@@ -34,9 +37,7 @@ app.use(fitnessRoutes);
 
 app.use(errorController.get404);
 
-console.log(process.env.DB_DATABASE);
-console.log(process.env.DB_HOST);
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASS);
-
-app.listen(3000);
+sequelize
+  .sync()
+  .then((result) => app.listen(3000))
+  .catch((err) => console.log(err));
