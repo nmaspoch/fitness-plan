@@ -6,7 +6,7 @@ const router = express.Router();
 
 const fitnessController = require('../controllers/fitness');
 
-router.get("/", fitnessController.getForm);
-router.post("/profile", fitnessController.postForm);
+// router.get("/", fitnessController.getForm);
+router.get("/", fitnessController.getProfile);
 
 module.exports = router;

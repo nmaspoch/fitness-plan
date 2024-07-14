@@ -23,18 +23,12 @@ exports.getForm = (req, res, next) => {
   // getText()
   //   .then((bodyText) => res.render("index", { bodyText: bodyText }))
   //   .catch((err) => console.log(err));
-  res.render("form", {pageTitle: "Home", bodyText: "Placeholder text"});
+  res.render("form", { pageTitle: "Home", bodyText: "Placeholder text" });
 };
 
-exports.postForm = (req, res, next) =>
-{
-  const weight = req.body.weight;
-  const age = req.body.age;
-  const height = req.body.height;
-  const goals = req.body.goals;
-
-  const profile = new Profile(weight, age, height, goals);
-  console.log(profile);
-
-  res.render("profile", {profile: profile});
-}
+exports.getProfile = (req, res, next) => {
+  Profile.findByPk(1).then((profile) =>
+    res.render("profile", {name: profile.name, weight:profile.weight, age:profile.age, height:profile.height, goals:profile.goals})
+  );
+  // console.log(profile);
+};
