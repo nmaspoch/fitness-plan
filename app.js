@@ -9,6 +9,8 @@ const expressHbs = require("express-handlebars");
 
 const fitnessRoutes = require("./routes/fitness");
 
+const profileController = require("./controllers/profile");
+const planController = require("./controllers/plan");
 const errorController = require("./controllers/error");
 
 const Profile = require("./models/profile");

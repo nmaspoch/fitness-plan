@@ -1,0 +1,72 @@
+<main>
+    <h1>Create Plan</h1>
+    <form action="/plan" method="POST">
+        <fieldset>
+            <legend>Plan Duration</legend>
+
+            <input type="radio" id="duration1" name="duration" value=4> 
+            <label for="duration1">4 weeks</label>
+
+            <input type="radio" id="duration2" name="duration" value=8>
+            <label for="duration2">8 weeks</label>
+
+            <input type="radio" id="duration3" name="duration" value=12>
+            <label for="duration3">12 weeks</label>
+
+            <input type="radio" id="duration4" name="duration" value=16>
+            <label for="duration4">16 weeks</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Sessions per week</legend>
+
+            <input type="radio" id="session1" name="sessions" value=1>
+            <label for="session1">1</label>
+
+            <input type="radio" id="session2" name="sessions" value=2>
+            <label for="session2">2</label>
+
+            <input type="radio" id="session3" name="sessions" value=3>
+            <label for="session3">3</label>
+
+            <input type="radio" id="session4" name="sessions" value=4>
+            <label for="session4">4</label>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Exercise types</legend>
+
+            <input type="checkbox" id="exercise1" name="exercises" value="Cardio">
+            <label for="exercise1">Cardio</label>
+
+            <input type="checkbox" id="exercise2" name="exercises" value="Weight training">
+            <label for="exercise2">Resistance training</label>
+
+            <input type="checkbox" id="exercise3" name="exercises" value="Bodyweight training">
+            <label for="exercise3">Resistance training</label>
+
+            <input type="checkbox" id="exercise4" name="exercises" value="Flexibility">
+            <label for="exercise4">Stretch exercises</label>
+        </fieldset>
+
+         <fieldset>
+            <legend>Fitness goal</legend>
+
+            <input type="radio" id="goal1" name="goal" value="be healthy">
+            <label for="goal1">Be healthy</label>
+
+            <input type="radio" id="goal2" name="goal" value="lose weight/fat">
+            <label for="goal2">Lose weight/fat</label>
+
+            <input type="radio" id="goal3" name="goal" value="gain weight/muscle">
+            <label for="goal3">Gain weight/muscle</label>
+
+            <input type="radio" id="goal4" name="goal" value="lose fat and gain muscle">
+            <label for="goal4">Lose fat and gain muscle</label>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</main>
+</html>
