@@ -4,9 +4,14 @@ const express = require('express');
 
 const router = express.Router();
 
-const fitnessController = require('../controllers/fitness');
+const profileController = require('../controllers/profile');
+const planController = require('../controllers/plan');
 
-// router.get("/", fitnessController.getForm);
-router.get("/", fitnessController.getProfile);
+router.get("/", profileController.getProfile);
+router.get("/create-profile", profileController.getCreateProfile);
+router.get("/create-plan", planController.getCreatePlan);
+
+// router.post("/profile", profileController.getProfile);
+router.post("/plan", planController.postPlan);
 
 module.exports = router;
