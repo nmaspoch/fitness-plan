@@ -1,3 +1,5 @@
+const Plan = require("../models/plan");
+
 const OpenAI = require("openai");
 const openai = new OpenAI();
 
@@ -8,11 +10,11 @@ async function getText(profile, planForm) {
     messages: [
       {
         role: "system",
-        content: prompts.system
+        content: prompts.system,
       },
       {
         role: "user",
-        content: eval('`' + prompts.user + '`')
+        content: eval("`" + prompts.user + "`"),
       },
     ],
     model: "gpt-4o",
@@ -34,14 +36,17 @@ exports.postPlan = (req, res, next) => {
   const planForm = req.body;
   Profile.findByPk(1)
     .then((profile) => {
-      getText(profile, planForm).then(response => console.log(response))
-        // .then((response) => {
-        //   return JSON.parse(response).workout_plan.sessions;
-        // })
-        // .then((sessions) =>
-        //   console.log(sessions[0])
-        //   res.render("./plan/plan", { pageTitle: "Plan", sessions: sessions.count })
-        // );
+      getText(profile, planForm)
+        .then((response) => {
+          return JSON.parse(response);
+        })
+        .then((response) => {
+          return response.workout_plan.sessions;
+        })
+        .then((sessions) => {
+          return new Plan(sessions);
+        })
+        .then((plan) => plan.getSessions());
     })
     .catch((err) => console.log(err));
 };
