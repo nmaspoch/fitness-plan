@@ -1,0 +1,48 @@
+{
+    "workout_plan": {
+        "sessions": [
+            {
+                "week": 1,
+                "session": 1,
+                "exercises": [
+                    {
+                        "name": "squats",
+                        "sets": 3,
+                        "reps": 8
+                    },
+                    {
+                        "name": "bench press",
+                        "sets": 3,
+                        "reps": 8
+                    },    {
+                        "name": "deadlifts",
+                        "sets": 3,
+                        "reps": 8
+                    }
+
+                ]
+            },
+            {
+                "week": 1,
+                "session": 2,
+                "exercises": [
+                    {
+                        "name": "squats",
+                        "sets": 3,
+                        "reps": 8
+                    },
+                    {
+                        "name": "bench press",
+                        "sets": 3,
+                        "reps": 8
+                    },    {
+                        "name": "deadlifts",
+                        "sets": 3,
+                        "reps": 8
+                    }
+
+                ]
+            }
+        ]
+    }
+}

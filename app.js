@@ -3,6 +3,7 @@ const env = require("dotenv").config();
 const sequelize = require("./util/database");
 
 const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const expressHbs = require("express-handlebars");
