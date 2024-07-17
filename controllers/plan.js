@@ -46,7 +46,9 @@ exports.postPlan = (req, res, next) => {
         .then((sessions) => {
           return new Plan(sessions);
         })
-        .then((plan) => plan.getSessions());
+        .then((plan) =>
+          res.render("./plan/plan", { pageTitle: "Plan", sessions: plan.getSessions() })
+        );
     })
     .catch((err) => console.log(err));
 };

@@ -17,9 +17,7 @@ module.exports = class Plan {
   }
 
   getSessions() {
-    for (let i = 0; i < this.sessions.length; i++) {
-      console.log(this.sessions[i]);
-    }
+    return this.sessions;
   }
 };
 
