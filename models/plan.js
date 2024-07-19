@@ -1,55 +1,18 @@
-module.exports = class Plan {
-  constructor(sessions) {
-    this.numSessions = sessions.length;
-    this.sessions = [];
+const Sequelize = require('sequelize');
 
-    for (let i = 0; i < sessions.length; i++) {
-      const exercises = [];
+const sequelize = require('../util/database');
 
-      for (let j = 0; j < sessions[i].exercises.length; j++) {
-        exercises.push(sessions[i].exercises[j].name);
-      }
+const Plan = sequelize.define('plan', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true
+  },
+  weeks: {
+    type: Sequelize.INTEGER,
+  },
+});
 
-      this.sessions.push(
-        `Week: ${sessions[i].week} Session: ${sessions[i].session} Exercises: ${exercises}`
-      );
-    }
-  }
-
-  getSessions() {
-    return this.sessions;
-  }
-};
-
-// const Sequelize = require('sequelize');
-
-// const sequelize = require('../util/database');
-
-// const Plan = sequelize.define('plan', {
-//   id: {
-//     type: Sequelize.INTEGER,
-//     autoIncrement: true,
-//     allowNull: false,
-//     primaryKey: true
-//   },
-//   name: Sequelize.STRING,
-//   weight: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false
-//   },
-//   age: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false
-//   },
-//   height: {
-//     type: Sequelize.INTEGER,
-//     allowNull: false
-//   },
-//   goals: {
-//     type: Sequelize.STRING,
-//     allowNull: false
-//   }
-// });
-
-// module.exports = Plan;
+module.exports = Plan;
 

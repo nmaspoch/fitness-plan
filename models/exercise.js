@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 const sequelize = require("../util/database");
 
-const Profile = sequelize.define("profile", {
+const Exercise = sequelize.define("exercise", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -13,22 +13,14 @@ const Profile = sequelize.define("profile", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  weight: {
+  sets: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  age: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  height: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  goals: {
+  reps: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 });
 
-module.exports = Profile;
+module.exports = Exercise;
