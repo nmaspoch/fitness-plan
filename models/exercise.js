@@ -19,7 +19,6 @@ const Exercise = sequelize.define("exercise", {
   },
   reps: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
 });
 
