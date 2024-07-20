@@ -11,7 +11,7 @@ router.get("/", profileController.getProfile);
 router.get("/create-profile", profileController.getCreateProfile);
 router.get("/create-plan", planController.getCreatePlan);
 
-// router.post("/profile", profileController.getProfile);
+router.get("/plan", planController.getPlan);
 router.post("/plan", planController.postPlan);
 
 module.exports = router;
