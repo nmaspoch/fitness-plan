@@ -22,59 +22,60 @@ async function getText(profile, planForm) {
         content: eval("`" + prompts.user + "`"),
       },
     ],
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     response_format: { type: "json_object" },
   });
   return completion.choices[0].message.content;
 }
 
-exports.getCreatePlan = (req, res, next) => {
-  res.render("./plan/create-plan", {
-    pageTitle: "Create Plan",
-    bodyText: "",
-  });
-};
-
-exports.getPlan = (req, res, next) => {
-  res.render("./plan/plan", {
-    pageTitle: "Plan",
-    sessions: req.profile
-      .getPlan()
-      .then((plan) =>
-        plan.getSessions().then((sessions) => {
-          return sessions;
-        })
-      )
-      .catch((err) => console.log(err)),
-  });
-};
-
-async function postPlan(req, res, next)
-{
+async function postPlan(req, res, next) {
   const planForm = req.body;
   response = await getText(req.profile, planForm);
   response = JSON.parse(response);
   sessions = response.workout_plan.sessions;
-  
+
   const plan = await req.profile.getPlan();
-  plan.update({numSessions: sessions.length});
+  plan.update({ numSessions: sessions.length });
   await plan.save();
 
-  for (let i = 0; i < sessions.length; i++)
-  {
-    const session = await plan.createSession({week: sessions[i].week, session: sessions[i].session});
+  for (let i = 0; i < sessions.length; i++) {
+    const session = await plan.createSession({
+      week: sessions[i].week,
+      session: sessions[i].session,
+    });
 
-    for (let j = 0; j < sessions[i].exercises.length; j++)
-    {
-      const exercise = await session.createExercise({name: sessions[i].exercises[j].name, sets: sessions[i].exercises[j].sets, reps: sessions[i].exercises[j].reps});
+    for (let j = 0; j < sessions[i].exercises.length; j++) {
+      const exercise = await session.createExercise({
+        name: sessions[i].exercises[j].name,
+        sets: sessions[i].exercises[j].sets,
+        reps: sessions[i].exercises[j].reps,
+      });
       session.save();
     }
-    await plan.save()
+    await plan.save();
+    await req.profile.save();
   }
+  res.redirect("/plan");
 }
 
+exports.getCreatePlan = (req, res, next) => {
+  res.render("./plan/create-plan", {
+    pageTitle: "Create Plan",
+  });
+};
 
-exports.postPlan = (req, res, next) => 
-  {
-    postPlan(req, res, next).then(res.redirect("/plan"))
-  }
+exports.getPlan = async (req, res, next) => {
+  const planInstance = await Plan.findOne({where: {profileId: req.profile.id}, include: {model: Session, include: Exercise}})
+  const plan = planInstance.toJSON();
+
+  res.render("./plan/plan", {
+    pageTitle: "Plan",
+    profile: req.profile,
+    plan: plan,
+    sessions: plan.sessions
+  });
+};
+
+exports.postPlan = (req, res, next) => {
+  postPlan(req, res, next);
+};

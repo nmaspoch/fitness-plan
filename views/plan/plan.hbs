@@ -1,5 +1,11 @@
 <main>
+  <h1>{{profile.name}}</h1>
+  <h2>Plan duration: {{plan.numSessions}} weeks</h2>
+
   {{#each sessions}}
-    <h1>Week {{this.week}} Session {{this.session}}</h1>
+    <h3>Week {{this.week}} Session {{this.session}}</h3>
+    {{#each this.exercises}}
+      <p>{{this.name}}: {{this.sets}} sets, {{this.reps}} reps</p>
+    {{/each}}
   {{/each}}
 </main>

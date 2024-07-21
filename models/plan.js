@@ -12,7 +12,7 @@ const Plan = sequelize.define('plan', {
   numSessions: {
     type: Sequelize.INTEGER,
   },
-});
+}
+);
 
 module.exports = Plan;
-
