@@ -60,7 +60,6 @@ Session.belongsTo(Plan);
 Session.hasMany(Exercise);
 Exercise.belongsTo(Session);
 
-sequelize.drop();
 sequelize
   .sync({force: true})
   .then((result) => {
