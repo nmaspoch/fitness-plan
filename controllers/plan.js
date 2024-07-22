@@ -70,7 +70,7 @@ exports.getPlan = async (req, res, next) => {
 
   res.render("./plan/plan", {
     pageTitle: "Plan",
-    profile: req.profile,
+    profileName: req.profile.name,
     plan: plan,
     sessions: plan.sessions
   });
