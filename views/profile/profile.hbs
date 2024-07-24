@@ -1,7 +1,37 @@
-<main>
-  <h1>{{name}}</h1>
-  <p>Weight: {{weight}} lb</p>
-  <p>Age: {{age}}</p>
-  <p>Height: {{height}} cm</p>
-  <p>Goals: {{goals}}</p>
-</main>
+{{!-- <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">{{name}}</h2>
+<p>Weight: {{weight}} lb</p>
+<p>Age: {{age}}</p>
+<p>Height: {{height}} cm</p>
+<p>Goals: {{goals}}</p> --}}
+
+<div>
+    <div class="px-4 sm:px-0">
+        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Profile
+            Information</h2>
+        {{!-- <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and plan.</p> --}}
+    </div>
+    <div class="mt-6 border-t border-gray-100">
+        <dl class="divide-y divide-gray-100">
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{name}}</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-gray-900">Age</dt>
+                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{age}}</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-gray-900">Height</dt>
+                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{height}} cm</dd>
+            </div>
+             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-gray-900">Weight</dt>
+                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{weight}} lb</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-gray-900">Fitness goals</dt>
+                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{goals}}</dd>
+            </div>
+        </dl>
+    </div>
+</div>
