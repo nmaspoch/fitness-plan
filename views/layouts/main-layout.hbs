@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="/css/app.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="/css/app.css">
 </head>
+
 <body>
-    <header>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/create-profile">Profile</a></li>
-            <li><a href="/create-plan">Create Plan</a></li>
-        </ul>
-    </header>
+  {{!-- <header>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/create-profile">Profile</a></li>
+      <li><a href="/create-plan">Create Plan</a></li>
+    </ul>
+  </header> --}}
+
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+            {{!-- <a href="/create-profile"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Create
+              Profile</a> --}}
+            {{!-- <a href="/create-plan"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Create
+              Plan</a> --}}
+            <a href="/plan"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-7xl px-4 sm:p-6 lg:p-8">
     {{{body}}}
+  </main>
 </body>
