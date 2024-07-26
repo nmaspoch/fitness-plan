@@ -1,5 +1,5 @@
-<form class="space-y-8 " action="/plan" method="POST">
-    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Create Plan</h2>
+<form id="form" class="space-y-8 " action="/plan" method="POST">
+  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Create Plan</h2>
   <fieldset>
     <legend class="text-sm font-semibold leading-6 text-gray-900">Plan Duration</legend>
     <p class="mt-1 text-sm leading-6 text-gray-600">How long would you like the plan to be?</p>
@@ -161,8 +161,18 @@
             </div>
   </fieldset>
 
-  <button type="submit"
+  <button onclick="toggleLoader()" type="submit"
     class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
     Submit</button>
-
 </form>
+
+<script type="text/javascript">
+  const loader = document.getElementById("loaderBody");
+  const form = document.getElementById("form");
+
+  function toggleLoader() {
+    loader.classList.remove("hidden");
+    loader.classList.add("flex");
+    form.classList.add("hidden");
+  }
+</script>
