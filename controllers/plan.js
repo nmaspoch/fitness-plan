@@ -49,6 +49,7 @@ async function postPlan(req, res, next) {
         name: sessions[i].exercises[j].name,
         sets: sessions[i].exercises[j].sets,
         reps: sessions[i].exercises[j].reps,
+        category: sessions[i].exercises[j].category,
       });
       session.save();
     }
@@ -65,7 +66,7 @@ exports.getCreatePlan = (req, res, next) => {
 };
 
 exports.getPlan = async (req, res, next) => {
-  const planInstance = await Plan.findOne({where: {profileId: req.profile.id}, include: {model: Session, include: Exercise}})
+  const planInstance = await Plan.findOne({ where: { profileId: req.profile.id }, include: { model: Session, include: Exercise } })
   const plan = planInstance.toJSON();
 
   res.render("./plan/plan", {

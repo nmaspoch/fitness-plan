@@ -18,6 +18,9 @@ const Exercise = sequelize.define("exercise", {
   reps: {
     type: Sequelize.STRING,
   },
+  category: {
+    type: Sequelize.STRING,
+  }
 });
 
 module.exports = Exercise;

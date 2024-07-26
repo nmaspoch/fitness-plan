@@ -19,6 +19,7 @@ const Plan = require("./models/plan");
 const Session = require("./models/session");
 const Exercise = require("./models/exercise");
 
+
 if (env.error) {
   throw new Error("Failed to load .env file");
 }
@@ -31,8 +32,10 @@ app.engine(
     extname: "hbs",
     defaultLayout: "main-layout",
     layoutsDir: "views/layouts",
-  })
+    partialsDir: "views/partials"
+  }), 
 );
+
 app.set("view engine", "hbs");
 app.set("views, views");
 
