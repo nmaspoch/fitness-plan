@@ -77,6 +77,6 @@ exports.getPlan = async (req, res, next) => {
   });
 };
 
-exports.postPlan = (req, res, next) => {
+exports.postCreatePlan = (req, res, next) => {
   postPlan(req, res, next);
 };
