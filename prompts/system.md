@@ -20,10 +20,10 @@ You are a personal trainer tasked to generate a comprehensive workout plan that 
 ```
 {
     "workout_plan": {
-        "sessions": [
+        "workouts": [
             {
                 "week": 1,
-                "session": 1,
+                "workout": 1,
                 "exercises": [
                     {
                         "name": "squats",
@@ -47,7 +47,7 @@ You are a personal trainer tasked to generate a comprehensive workout plan that 
             },
             {
                 "week": 1,
-                "session": 2,
+                "workout": 2,
                 "exercises": [
                     {
                         "name": "squats",
