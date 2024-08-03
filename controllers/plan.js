@@ -1,6 +1,6 @@
 const Plan = require("../models/plan");
 const Profile = require("../models/profile");
-const Session = require("../models/session");
+const Workout = require("../models/workout");
 const Exercise = require("../models/exercise");
 
 const sequelize = require("../util/database");
@@ -32,26 +32,26 @@ async function postPlan(req, res, next) {
   const planForm = req.body;
   response = await getText(req.profile, planForm);
   response = JSON.parse(response);
-  sessions = response.workout_plan.sessions;
+  workouts = response.workout_plan.workouts;
 
   const plan = await req.profile.getPlan();
-  plan.update({ numSessions: sessions.length });
+  plan.update({ numworkouts: workouts.length });
   await plan.save();
 
-  for (let i = 0; i < sessions.length; i++) {
-    const session = await plan.createSession({
-      week: sessions[i].week,
-      session: sessions[i].session,
+  for (let i = 0; i < workouts.length; i++) {
+    const workout = await plan.createWorkout({
+      week: workouts[i].week,
+      workout: workouts[i].workout,
     });
 
-    for (let j = 0; j < sessions[i].exercises.length; j++) {
-      const exercise = await session.createExercise({
-        name: sessions[i].exercises[j].name,
-        sets: sessions[i].exercises[j].sets,
-        reps: sessions[i].exercises[j].reps,
-        category: sessions[i].exercises[j].category,
+    for (let j = 0; j < workouts[i].exercises.length; j++) {
+      const exercise = await workout.createExercise({
+        name: workouts[i].exercises[j].name,
+        sets: workouts[i].exercises[j].sets,
+        reps: workouts[i].exercises[j].reps,
+        category: workouts[i].exercises[j].category,
       });
-      session.save();
+      workout.save();
     }
     await plan.save();
     await req.profile.save();
@@ -66,14 +66,14 @@ exports.getCreatePlan = (req, res, next) => {
 };
 
 exports.getPlan = async (req, res, next) => {
-  const planInstance = await Plan.findOne({ where: { profileId: req.profile.id }, include: { model: Session, include: Exercise } })
+  const planInstance = await Plan.findOne({ where: { profileId: req.profile.id }, include: { model: Workout, include: Exercise } })
   const plan = planInstance.toJSON();
 
   res.render("./plan/plan", {
     pageTitle: "Plan",
     profileName: req.profile.name,
     plan: plan,
-    sessions: plan.sessions
+    workouts: plan.workouts
   });
 };
 

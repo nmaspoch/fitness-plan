@@ -16,7 +16,7 @@ const errorController = require("./controllers/error");
 
 const Profile = require("./models/profile");
 const Plan = require("./models/plan");
-const Session = require("./models/session");
+const Workout = require("./models/workout");
 const Exercise = require("./models/exercise");
 
 
@@ -57,11 +57,11 @@ app.use(errorController.get404);
 Plan.belongsTo(Profile);
 Profile.hasOne(Plan);
 
-Plan.hasMany(Session);
-Session.belongsTo(Plan);
+Plan.hasMany(Workout);
+Workout.belongsTo(Plan);
 
-Session.hasMany(Exercise);
-Exercise.belongsTo(Session);
+Workout.hasMany(Exercise);
+Exercise.belongsTo(Workout);
 
 sequelize
   .sync({force: true})
