@@ -11,15 +11,19 @@ const Exercise = sequelize.define("exercise", {
   },
   name: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   sets: {
     type: Sequelize.INTEGER,
+    allowNull: false,
   },
   reps: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   category: {
     type: Sequelize.STRING,
+    allowNull: false,
   }
 });
 

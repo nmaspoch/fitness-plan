@@ -6,9 +6,6 @@ const isAuth = require("../middleware/is-auth");
 
 router.get("/", authController.getLandingPage);
 
-// router.get("/create-profile", isAuth, authController.getCreateProfile);
-// router.post("/create-profile", isAuth, authController.postCreateProfile);
-
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
 router.post("/logout", authController.postLogout)

@@ -9,8 +9,9 @@ const Plan = sequelize.define('plan', {
     allowNull: false,
     primaryKey: true
   },
-  numSessions: {
+  numWorkouts: {
     type: Sequelize.INTEGER,
+    allowNull: false,
   },
 }
 );
