@@ -8,12 +8,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const expressHbs = require("express-handlebars");
 
-const planRoutes = require("./routes/plan");
-const profileRoutes = require("./routes/profile");
 const authRoutes = require("./routes/auth");
+const routes = require("./routes/routes");
 
-const profileController = require("./controllers/profile");
-const planController = require("./controllers/plan");
+const siteController = require("./controllers/site");
 const authController = require("./controllers/auth");
 const errorController = require("./controllers/error");
 
@@ -46,7 +44,7 @@ app.engine(
   "hbs",
   expressHbs.engine({
     extname: "hbs",
-    defaultLayout: "main-layout",
+    // defaultLayout: "main-layout",
     layoutsDir: "views/layouts",
     partialsDir: "views/partials"
   }), 
@@ -72,8 +70,8 @@ app.use((req, res, next) => {
     .catch(err => console.log(err));
 });
 
-app.use(planRoutes);
-app.use(profileRoutes);
+// app.use(planRoutes);
+app.use(routes);
 app.use(authRoutes);
 app.use(errorController.get404);
 
@@ -87,22 +85,6 @@ Workout.hasMany(Exercise);
 Exercise.belongsTo(Workout);
 
 sequelize
-  .sync({force: true})
-  .then((result) => {
-    return Profile.findByPk(1);
-  })
-  .then((profile) => {
-    if (!profile) {
-      return Profile.create({
-        name: "Nicholas Maspoch",
-        weight: 130,
-        age: 20,
-        height: 158,
-        goals: "Lose fat",
-      });
-    }
-    return profile;
-  })
-  .then(profile => profile.createPlan())
+  .sync()
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err));
