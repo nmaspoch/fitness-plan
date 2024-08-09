@@ -11,6 +11,13 @@ const Profile = sequelize.define("profile", {
   },
   name: {
     type: Sequelize.STRING,
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  password: {
+    type: Sequelize.STRING,
     allowNull: false,
   },
   weight: {
@@ -23,10 +30,6 @@ const Profile = sequelize.define("profile", {
   },
   height: {
     type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  goals: {
-    type: Sequelize.STRING,
     allowNull: false,
   },
 });
