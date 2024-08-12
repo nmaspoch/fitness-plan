@@ -8,6 +8,7 @@
             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Plan</a>
           {{#if isAuthenticated}}
           <form action="/logout" method="post">
+            <input type="hidden" name="csrfToken" value="{{csrfToken}}">
             <button class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               type="submit">Logout</button>
           </form>
